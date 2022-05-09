@@ -6,13 +6,12 @@
       <h4 class="header">
         It is capable of continuing a piece of writing based on a prompt.
       </h4>
-      <p>Your prompt must make it clear what you want.</p>
+      <p>Your prompt should make it clear what you want.</p>
       <p>i.e. "Suggest three names for a baby."</p>
-      <p>Or... "Write a slogan for a pencil business."</p>
     </div>
     <form action="" class="text-form">
       <label class="form-label" for="form-text-area"
-        >Enter your prompt below.</label
+        >Enter your prompt here.</label
       >
       <textarea
         class="form-control"
@@ -20,6 +19,10 @@
         rows="12"
         placeholder="Write a song about..."
       ></textarea>
+      <div class="slider">
+        <label for="slider-range">How creative should the response be, from 0 to 1?</label>
+        <input type="range" min="0" max="1" value="0.2" class="slider" id="slider-range">
+      </div>
       <button type="submit" class="btn btn-primary my-1">Submit</button>
     </form>
   </div>
@@ -36,6 +39,12 @@ export default {
 .page-wrapper {
   margin: 0;
   padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.slider {
+  margin-top: 1rem;
 }
 .text-wrapper {
   display: flex;
@@ -59,12 +68,12 @@ export default {
   align-content: center;
   background-color: #ffffff;
   border: #ffffff;
-  border-radius: 0.4rem;
+  border-radius: 0.3rem;
 }
 
 
 .btn-primary {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   border-radius: 5rem;
   background-color: transparent;
   height: 1.5rem;
