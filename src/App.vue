@@ -22,8 +22,8 @@ export default {
   color: #2c3e50;
   height: 100vh;
   width: 100vw;
-  margin: 0;
-  padding: 0;
+  margin: auto;
+  padding: auto;
   background: url('/src/assets/cotton-candy-background.png');
   background-size: cover;
 }
