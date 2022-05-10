@@ -4,6 +4,8 @@ A simple website for interacting with GPT-3, a natural language processing AI mo
 
 All the pertinent code can be found in src/components/HomePage.vue
 
+You can see the site here: https://fun-with-gpt3-liam-gentile.netlify.app/
+
 ## Features
  - Prompt (a text input that the model continues off of)
  
