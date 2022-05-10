@@ -15,7 +15,7 @@
       >
       <textarea
         class="form-control"
-        v-model="prompt"
+        v-model="input_prompt"
         id="form-text-area"
         rows="12"
         placeholder="Write a song about..."
@@ -35,7 +35,9 @@
           id="slider-range"
         />
       </div>
-      <button type="submit" class="btn btn-primary my-1">Submit</button>
+      <button type="submit" class="btn btn-primary my-1" v-on:click="submit">
+        Submit
+      </button>
     </form>
   </div>
 </template>
@@ -45,10 +47,28 @@ export default {
   name: "HomePage",
   data() {
     return {
-      prompt: '',
+      input_prompt: "",
       creativity: 0,
-    }
-  }
+    };
+  },
+  methods: {
+    submit() {
+      fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.VUE_APP_OPEN_API_KEY}`,
+        },
+        data: {
+          "prompt": this.input_prompt,
+          "temperature": this.creativity
+        }
+      })
+        .then((res) => res.json())
+        .then((response) => {
+          console.log(response);
+        });
+    },
+  },
 };
 </script>
 
@@ -84,7 +104,7 @@ export default {
   max-width: 80%;
   height: 40%;
   align-content: center;
-  background: #FAF9F6;
+  background: #faf9f6;
   border: none;
   outline: none;
   border-radius: 0.3rem;
