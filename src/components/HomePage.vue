@@ -37,10 +37,14 @@
       </div>
       <button type="submit" class="btn btn-primary my-1">Submit</button>
     </form>
-    <div class="response-wrapper">
-      <p class="api-response" v-html="prompt"></p>
-      <p class="api-response" v-html="response"></p>
-      <p class="api-response" v-html="time"></p>
+    <div
+      class="response-wrapper"
+      v-bind:key="response"
+      v-for="response in responses.reverse()"
+    >
+      <p class="api-response" v-html="response.prompt"></p>
+      <p class="api-response" v-html="response.response"></p>
+      <p class="api-response" v-html="response.time"></p>
     </div>
   </div>
 </template>
@@ -52,9 +56,7 @@ export default {
     return {
       input_prompt: "",
       creativity: 0,
-      response: "",
-      prompt: "",
-      time: "",
+      responses: [],
     };
   },
   methods: {
@@ -73,9 +75,12 @@ export default {
         .then((res) => res.json())
         .then((response) => {
           console.log(response);
-          this.prompt = "Prompt: ".bold() + this.input_prompt;
-          this.response = "Response: ".bold() + response.choices[0].text;
-          this.time = new Date();
+
+          this.responses.push({
+            prompt: "Prompt: ".bold() + this.input_prompt,
+            response: "Response: ".bold() + response.choices[0].text,
+            time: new Date(),
+          });
         })
         .catch((error) => {
           error.response.status;
