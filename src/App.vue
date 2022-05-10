@@ -1,16 +1,16 @@
 <template>
-  <HomePage/>
+  <HomePage />
 </template>
 
 <script>
-import HomePage from './components/HomePage.vue'
+import HomePage from "./components/HomePage.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HomePage
-  }
-}
+    HomePage,
+  },
+};
 </script>
 
 <style>
@@ -26,8 +26,9 @@ export default {
   padding: auto;
 }
 
-html { 
-  background: url('/src/assets/cotton-candy-background.png') no-repeat center center fixed; 
+html {
+  background: url("/src/assets/cotton-candy-background.png") no-repeat center
+    center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
