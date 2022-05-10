@@ -69,7 +69,7 @@ export default {
         },
         body: JSON.stringify({
           prompt: this.input_prompt,
-          temperature: this.temperature,
+          temperature: parseFloat(this.creativity),
         }),
       })
         .then((res) => res.json())
