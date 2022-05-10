@@ -2,6 +2,8 @@
 
 A simple website for interacting with GPT-3, a natural language processing AI model. This site was created as part of my application to the 2022 Fall Front End Development Internship at Shopify. 
 
+All the pertinent code can be found in src/components/HomePage.vue
+
 ## Features
  - Prompt (a text input that the model continues off of)
  
