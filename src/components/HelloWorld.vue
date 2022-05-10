@@ -3,9 +3,7 @@
     <div class="text-wrapper">
       <h1 class="header">Fun with GPT-3</h1>
       <h4 class="header">GPT-3 is a natural language AI model.</h4>
-      <h4 class="header">
-        It is capable of continuing a piece of writing based on a prompt.
-      </h4>
+      <p class="description"> It is capable of continuing a piece of writing based on a prompt.</p>
       <p>Your prompt should make it clear what you want.</p>
       <p>i.e. "Suggest three names for a baby."</p>
     </div>
@@ -64,11 +62,14 @@ export default {
 #form-text-area {
   margin-top: 1.5rem;
   width: 50%;
+  max-width: 80%;
   height: 40%;
   align-content: center;
-  background-color: #ffffff;
-  border: #ffffff;
+  background: #ffffff;
+  border: none;
+  outline: none;
   border-radius: 0.3rem;
+  box-shadow: 2.5px 5px;
 }
 
 
@@ -96,7 +97,14 @@ export default {
 }
 
 .slider-label {
-  font-weight: bold;
-  font-style: italic;
+  font-weight: 700;
+}
+
+.slider {
+  max-width: 80%;
+}
+.description {
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 1.5rem;
 }
 </style>
