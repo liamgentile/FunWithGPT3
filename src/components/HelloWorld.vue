@@ -20,8 +20,8 @@
         placeholder="Write a song about..."
       ></textarea>
       <div class="slider">
-        <label for="slider-range">How creative should the response be, from 0 to 1?</label>
-        <input type="range" min="0" max="1" value="0.2" class="slider" id="slider-range">
+        <label class="slider-label" for="slider-range">How creative should the response be? Drag to the right for more creativity.</label>
+        <input type="range" min="0" max="1" value="0" step="0.1" class="slider-bar" id="slider-range">
       </div>
       <button type="submit" class="btn btn-primary my-1">Submit</button>
     </form>
@@ -62,7 +62,7 @@ export default {
   font-weight: 700;
 }
 #form-text-area {
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   width: 50%;
   height: 40%;
   align-content: center;
@@ -73,7 +73,7 @@ export default {
 
 
 .btn-primary {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   border-radius: 5rem;
   background-color: transparent;
   height: 1.5rem;
@@ -85,5 +85,18 @@ export default {
 
 .btn-primary:hover {
   background-color: #dafcfd;
+}
+
+.slider-bar {
+  accent-color:#cab8f8;
+}
+
+.slider-bar:hover {
+  accent-color: #dafcfd;
+}
+
+.slider-label {
+  font-weight: bold;
+  font-style: italic;
 }
 </style>
