@@ -81,9 +81,6 @@ export default {
             response: "Response: ".bold() + response.choices[0].text,
             time: new Date(),
           });
-        })
-        .catch((error) => {
-          error.response.status;
         });
     },
   },
