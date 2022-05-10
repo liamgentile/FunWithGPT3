@@ -1,14 +1,14 @@
 <template>
-  <HelloWorld/>
+  <HomePage/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HomePage from './components/HomePage.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HomePage
   }
 }
 </script>
@@ -24,8 +24,13 @@ export default {
   width: 100vw;
   margin: auto;
   padding: auto;
-  background: url('/src/assets/cotton-candy-background.png');
-  background-size: cover;
 }
 
+html { 
+  background: url('/src/assets/cotton-candy-background.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 </style>
