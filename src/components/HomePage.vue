@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrapper">
-    <div class="text-wrapper">
+    <div class="instructions-wrapper">
       <h1 class="header">Fun with GPT-3</h1>
       <h4 class="header">GPT-3 is a natural language AI model.</h4>
       <p class="description">
@@ -9,7 +9,7 @@
       <p>Your prompt should make it clear what you want.</p>
       <p>For example, "Suggest three names for a baby."</p>
     </div>
-    <form class="text-form" v-on:submit.prevent="submit">
+    <form class="form" v-on:submit.prevent="submit">
       <label class="form-label" for="form-text-area"
         >Enter your prompt here.</label
       >
@@ -35,10 +35,13 @@
           id="slider-range"
         />
       </div>
-      <button type="submit" class="btn btn-primary my-1">
-        Submit
-      </button>
+      <button type="submit" class="btn btn-primary my-1">Submit</button>
     </form>
+    <div class="response-wrapper">
+      <p class="api-response" v-html="prompt"></p>
+      <p class="api-response" v-html="response"></p>
+      <p class="api-response" v-html="time"></p>
+    </div>
   </div>
 </template>
 
@@ -49,6 +52,9 @@ export default {
     return {
       input_prompt: "",
       creativity: 0,
+      response: "",
+      prompt: "",
+      time: "",
     };
   },
   methods: {
@@ -61,16 +67,19 @@ export default {
         },
         body: JSON.stringify({
           prompt: this.input_prompt,
-          temperature: this.temperature
-        })
+          temperature: this.temperature,
+        }),
       })
         .then((res) => res.json())
         .then((response) => {
           console.log(response);
+          this.prompt = "Prompt: ".bold() + this.input_prompt;
+          this.response = "Response: ".bold() + response.choices[0].text;
+          this.time = new Date();
         })
         .catch((error) => {
-                     error.response.status;
-                 })
+          error.response.status;
+        });
     },
   },
 };
@@ -87,12 +96,12 @@ export default {
 .slider {
   margin-top: 1rem;
 }
-.text-wrapper {
+.instructions-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
 }
-.text-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -151,5 +160,19 @@ export default {
   border-bottom: 2px solid #2c3e50;
   padding-bottom: 1.5rem;
   max-width: 95%;
+}
+
+.response-wrapper {
+  justify-content: center;
+  padding-bottom: 3rem;
+  flex-direction: column;
+  display: flex;
+}
+
+.api-response {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 </style>
