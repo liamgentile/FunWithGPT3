@@ -9,7 +9,7 @@
       <p>Your prompt should make it clear what you want.</p>
       <p>For example, "Suggest three names for a baby."</p>
     </div>
-    <form action="" class="text-form">
+    <form class="text-form" v-on:submit.prevent="submit">
       <label class="form-label" for="form-text-area"
         >Enter your prompt here.</label
       >
@@ -35,7 +35,7 @@
           id="slider-range"
         />
       </div>
-      <button type="submit" class="btn btn-primary my-1" v-on:click="submit">
+      <button type="submit" class="btn btn-primary my-1">
         Submit
       </button>
     </form>
@@ -52,21 +52,25 @@ export default {
     };
   },
   methods: {
-    submit() {
+    async submit() {
       fetch("https://api.openai.com/v1/engines/text-curie-001/completions", {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Authorization: `Bearer ${process.env.VUE_APP_OPEN_API_KEY}`,
         },
-        data: {
-          "prompt": this.input_prompt,
-          "temperature": this.creativity
-        }
+        body: JSON.stringify({
+          prompt: this.input_prompt,
+          temperature: this.temperature
+        })
       })
         .then((res) => res.json())
         .then((response) => {
           console.log(response);
-        });
+        })
+        .catch((error) => {
+                     error.response.status;
+                 })
     },
   },
 };
