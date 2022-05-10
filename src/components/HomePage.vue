@@ -40,7 +40,7 @@
     <div
       class="response-wrapper"
       v-bind:key="response"
-      v-for="response in responses.reverse()"
+      v-for="response in sortResponses"
     >
       <p class="api-response" v-html="response.prompt"></p>
       <p class="api-response" v-html="response.response"></p>
@@ -58,6 +58,13 @@ export default {
       creativity: 0,
       responses: [],
     };
+  },
+  computed: {
+    sortResponses: function () {
+      return this.responses.slice().sort(function (a, b) {
+        return a.time < b.time ? 1 : -1;
+      });
+    },
   },
   methods: {
     async submit() {
