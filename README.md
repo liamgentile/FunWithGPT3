@@ -1,6 +1,6 @@
 # fun-with-gpt3
 
-A simple website for interacting with GPT-3, a natural language processing AI model. This site was created as part of my application to the 2022 Fall Front End Development Internship at Shopify. 
+A simple website for interacting with GPT-3, a natural language processing AI model. 
 
 The pertinent code can be found in `src/components/HomePage.vue`
 
